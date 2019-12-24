@@ -1,9 +1,13 @@
 import React from 'react'
 
-export const QuoteText: React.FC = () => {
+interface IQuoteText {
+  text: string
+}
+
+export const QuoteText: React.FC<IQuoteText> = ({ text }) => {
   return (
     <p id='text'>
-      Text
+      { text }
     </p>
   )
 }

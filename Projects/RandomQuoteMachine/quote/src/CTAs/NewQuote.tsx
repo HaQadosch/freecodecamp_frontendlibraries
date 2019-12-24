@@ -1,8 +1,13 @@
 import React from 'react'
 
-export const NewQuote: React.FC = () => {
+interface INewQuote {
+  onNext: React.Dispatch<React.SetStateAction<number>>
+  curIndex: number
+}
+
+export const NewQuote: React.FC<INewQuote> = ({ onNext, curIndex }) => {
   return (
-    <button id='new-quote'>
+    <button onClick={ () => onNext(curIndex + 1) } id='new-quote'>
       New Quote
     </button>
   )
