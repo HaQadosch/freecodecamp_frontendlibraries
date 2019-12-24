@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const QuoteText = () => {
+export const QuoteText: React.FC = () => {
   return (
     <p id='text'>
       Text

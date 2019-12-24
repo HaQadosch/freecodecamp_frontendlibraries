@@ -1,0 +1,204 @@
+{
+  "StarWars": [
+    {
+      "quote": "Help me, Obi-Wan Kenobi. You’re my only hope.",
+      "author": "Leia Organa",
+      "source": "A NEW HOPE"
+    },
+    {
+      "quote": "I find your lack of faith disturbing.",
+      "author": "Darth Vader",
+      "source": "A NEW HOPE"
+    },
+    {
+      "quote": "It’s the ship that made the Kessel run in less than twelve parsecs. I’ve outrun Imperial starships. Not the local bulk cruisers, mind you. I’m talking about the big Corellian ships, now. She’s fast enough for you, old man.",
+      "author": "Han Solo",
+      "source": "A NEW HOPE"
+    },
+    {
+      "quote": "The Force will be with you. Always.",
+      "author": "Obi-Wan Kenobi",
+      "source": "A NEW HOPE"
+    },
+    {
+      "quote": "Why, you stuck-up, half-witted, scruffy-looking nerf herder!",
+      "author": "Leia Organa ",
+      "source": "THE EMPIRE STRIKES BACK"
+    },
+    {
+      "quote": "Never tell me the odds!",
+      "author": "Han Solo",
+      "source": "THE EMPIRE STRIKES BACK"
+    },
+    {
+      "quote": "Do. Or do not. There is no try.",
+      "author": "Yoda",
+      "source": "THE EMPIRE STRIKES BACK"
+    },
+    {
+      "quote": "No. I am your father.",
+      "author": "Darth Vader",
+      "source": "THE EMPIRE STRIKES BACK"
+    },
+    {
+      "quote": "When gone am I, the last of the Jedi will you be. The Force runs strong in your family. Pass on what you have learned.",
+      "author": "Yoda",
+      "source": "RETURN OF THE JEDI"
+    },
+    {
+      "quote": "I’ll never turn to the dark side. You’ve failed, your highness. I am a Jedi, like my father before me.",
+      "author": "Luke Skywalker",
+      "source": "RETURN OF THE JEDI"
+    },
+    {
+      "quote": "Now, young Skywalker, you will die.",
+      "author": "Emperor Palpatine",
+      "source": "RETURN OF THE JEDI"
+    },
+    {
+      "quote": "Just for once, let me look on you with my own eyes.",
+      "author": "Anakin Skywalker",
+      "source": "RETURN OF THE JEDI"
+    },
+    {
+      "quote": "There’s always a bigger fish.",
+      "author": "Qui-Gon Jinn",
+      "source": "THE PHANTOM MENACE"
+    },
+    {
+      "quote": "In time, the suffering of your people will persuade you to see our point of view.",
+      "author": "Nute Gunray",
+      "source": "THE PHANTOM MENACE"
+    },
+    {
+      "quote": "You can’t stop the change, any more than you can stop the suns from setting.",
+      "author": "Shmi Skywalker",
+      "source": "THE PHANTOM MENACE"
+    },
+    {
+      "quote": "Fear is the path to the dark side. Fear leads to anger; anger leads to hate; hate leads to suffering. I sense much fear in you.",
+      "author": "Yoda",
+      "source": "THE PHANTOM MENACE"
+    },
+    {
+      "quote": "Well, if droids could think, there’d be none of us here, would there?",
+      "author": "Obi-Wan Kenobi",
+      "source": "ATTACK OF THE CLONES"
+    },
+    {
+      "quote": "We must keep our faith in the Republic. The day we stop believing democracy can work is the day we lose it.",
+      "author": "Queen Jamillia",
+      "source": "ATTACK OF THE CLONES"
+    },
+    {
+      "quote": "I’m just a simple man trying to make my way in the universe.",
+      "author": "Jango Fett",
+      "source": "ATTACK OF THE CLONES"
+    },
+    {
+      "quote": "What if I told you that the Republic was now under the control of a Dark Lord of the Sith?",
+      "author": "Count Dooku",
+      "source": "ATTACK OF THE CLONES"
+    },
+    {
+      "quote": "The dark side of the Force is a pathway to many abilities some consider to be unnatural.",
+      "author": "Chancellor Palpatine",
+      "source": "REVENGE OF THE SITH"
+    },
+    {
+      "quote": "Power! Unlimited power!",
+      "author": "Darth Sidious",
+      "source": "REVENGE OF THE SITH"
+    },
+    {
+      "quote": "So this is how liberty dies. With thunderous applause.",
+      "author": "Padmé Amidala",
+      "source": "REVENGE OF THE SITH"
+    },
+    {
+      "quote": "You were my brother, Anakin. I loved you.",
+      "author": "Obi-Wan Kenobi",
+      "source": "REVENGE OF THE SITH"
+    },
+    {
+      "quote": "To die for one’s people is a great sacrifice. To live for one’s people, an even greater sacrifice. I choose to live for my people.",
+      "author": "Riyo Chuchi",
+      "source": "STAR WARS: THE CLONE WARS"
+    },
+    {
+      "quote": "You are the Chosen One. You have brought balance to this world. Stay on this path, and you will do it again for the galaxy. But beware your heart.",
+      "author": "The Father",
+      "source": "STAR WARS: THE CLONE WARS"
+    },
+    {
+      "quote": "Remember, my dear Obi-Wan. I’ve loved you always. I always will.",
+      "author": "Duchess Satine Kryze",
+      "source": "STAR WARS: THE CLONE WARS"
+    },
+    {
+      "quote": "“The Sith killed each other, victims of their own greed. But from the ashes of their destruction, I was the last survivor. I chose to pass my knowledge on to only one. I created a legacy so resilient that now you come before me.",
+      "author": "Darth Bane",
+      "source": "STAR WARS: THE CLONE WARS"
+    },
+    {
+      "quote": "The Sith took everything from me. Ripped me from my mother’s arms, murdered my brother, used me as a weapon, and then cast me aside. Abandoned me. Once, I had power — now I have nothing.",
+      "author": "Maul",
+      "source": "STAR WARS REBELS"
+    },
+    {
+      "quote": "I am no Jedi",
+      "author": "Ahsoka Tano",
+      "source": "STAR WARS REBELS"
+    },
+    {
+      "quote": "An object cannot make you good or evil. The temptation of power, forbidden knowledge, even the desire to do good can lead some down that path. But only you can change yourself.",
+      "author": "Bendu",
+      "source": "STAR WARS REBELS"
+    },
+    {
+      "quote": "If you define yourself by your power to take life, your desire to dominate, to possess, then you have nothing.",
+      "author": "Obi-Wan Kenobi",
+      "source": "STAR WARS REBELS"
+    },
+    {
+      "quote": "The garbage’ll do!",
+      "author": "Rey",
+      "source": "THE FORCE AWAKENS"
+    },
+    {
+      "quote": "Chewie, we’re home.",
+      "author": "Han Solo",
+      "source": "THE FORCE AWAKENS"
+    },
+    {
+      "quote": "You know, no matter how much we fought, I’ve always hated watching you leave.",
+      "author": "Leia Organa",
+      "source": "THE FORCE AWAKENS"
+    },
+    {
+      "quote": "Oh, my dear friend. How I’ve missed you.",
+      "author": "C-3PO",
+      "source": "THE FORCE AWAKENS"
+    },
+    {
+      "quote": "I’m one with the Force. The Force is with me.",
+      "author": "Chirrut Îmwe",
+      "source": "ROGUE ONE: A STAR WARS STORY"
+    },
+    {
+      "quote": "Every time I walked away from something I wanted to forget, I told myself it was for a cause that I believed in. A cause that was worth it. Without that, we’re lost.",
+      "author": "Cassian Andor",
+      "source": "ROGUE ONE: A STAR WARS STORY"
+    },
+    {
+      "quote": "Jyn, I’ll be there for you. Cassian said I had to.",
+      "author": "K-2SO",
+      "source": "ROGUE ONE: A STAR WARS STORY"
+    },
+    {
+      "quote": "Hope.",
+      "author": "Leia Organa",
+      "source": "ROGUE ONE: A STAR WARS STORY"
+    }
+  ]
+}
