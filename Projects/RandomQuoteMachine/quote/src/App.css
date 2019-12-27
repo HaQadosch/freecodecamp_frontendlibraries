@@ -6,6 +6,7 @@
   align-items: center;
 
   max-width: 1024px;
+  height: 4rem;
   margin: 100px;
 
   border: 1px solid var(--soft-white);
