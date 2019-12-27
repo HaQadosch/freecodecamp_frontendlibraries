@@ -1,0 +1,14 @@
+/* Draw a round dot before the text */
+#text::before {
+  display: inline-block;
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+
+  background-color: blue;
+}
+
+#text::after {
+  content: '';
+}

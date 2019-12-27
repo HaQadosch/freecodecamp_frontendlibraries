@@ -1,4 +1,5 @@
 import React from 'react'
+import './NewQuote.css'
 
 interface INewQuote {
   onNext: React.Dispatch<React.SetStateAction<number>>
