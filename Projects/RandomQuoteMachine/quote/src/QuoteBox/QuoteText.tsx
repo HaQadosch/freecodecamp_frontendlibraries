@@ -1,4 +1,5 @@
 import React from 'react'
+import './QuoteText.css'
 
 interface IQuoteText {
   text: string
@@ -6,8 +7,10 @@ interface IQuoteText {
 
 export const QuoteText: React.FC<IQuoteText> = ({ text }) => {
   return (
-    <p id='text'>
-      { text }
-    </p>
+    <q id='text'>
+      <em>
+        { text }
+      </em>
+    </q>
   )
 }

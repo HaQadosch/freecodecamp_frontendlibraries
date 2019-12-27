@@ -1,0 +1,15 @@
+#new-quote {
+  border-radius: 13px;
+  justify-self: end;
+
+  margin-right: 15px;
+  height: 2.5rem;
+
+  border: 1px solid var(--soft-white);
+  box-shadow: -6px -6px 26px 0px var(--light-white), 6px 6px 16px 0px var(--light-westar);
+}
+
+#new-quote:hover {
+  cursor: pointer;
+  box-shadow: inset 6px 6px 9px 0px var(--light-westar);
+}
