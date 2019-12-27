@@ -4,7 +4,6 @@ import { QuoteText } from './QuoteBox/QuoteText';
 import { QuoteAuthor } from './QuoteBox/QuoteAuthor';
 import { QuoteSource } from "./QuoteBox/QuoteSource";
 import { NewQuote } from './CTAs/NewQuote';
-import { TweetQuote } from './CTAs/TweetQuote';
 import { StarWars } from './assets/quotes.json'
 import { shuffle } from './utils/shuffle';
 
@@ -32,7 +31,6 @@ const App: React.FC = () => {
       <QuoteAuthor author={ author } />
       <QuoteSource source={ source } />
       <NewQuote onNext={ setIndex } curIndex={ index } />
-      <TweetQuote />
     </main>
   );
 }
