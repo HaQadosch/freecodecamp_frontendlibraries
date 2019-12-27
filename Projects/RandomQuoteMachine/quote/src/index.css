@@ -1,5 +1,16 @@
+:root {
+  --whisper: hsl(0,3%,93.5%);
+  --dark-whisper: rgb(251,251,251);
+  --soft-white: rgba(255, 255, 255, 0.20);
+  --light-white: rgba(255, 255, 255, 0.83); 
+  --light-westar: rgba(217, 210, 200, 0.51); 
+}
+
 body {
   margin: 0;
+
+  background-color: var(--whisper);
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;

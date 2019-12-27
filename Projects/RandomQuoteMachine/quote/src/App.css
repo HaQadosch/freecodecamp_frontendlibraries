@@ -4,8 +4,16 @@
     "text author source cta"
     / auto auto auto 1fr;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 25px;
+
+  max-width: 1024px;
+  margin: 100px;
+
+  border: 1px solid var(--soft-white);
+  border-radius: 12px;
+  box-shadow: -6px -6px 26px 0px var(--light-white), 6px 6px 16px 0px var(--light-westar);
+  background-color: var(--whisper);
+
+  font-size: 0.8em;
 }
 
 #quote-box > p {

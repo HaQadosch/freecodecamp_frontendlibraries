@@ -2,4 +2,12 @@
   border-radius: 25px;
   justify-self: end;
   align-self: stretch;
+
+  border: 1px solid var(--soft-white);
+  box-shadow: -6px -6px 26px 0px var(--light-white), 6px 6px 16px 0px var(--light-westar);
+  background-color: rgb(227,225,225);
+}
+
+#new-quote:hover {
+  cursor: pointer;
 }
