@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { QuoteText } from './QuoteBox/QuoteText';
 import { QuoteAuthor } from './QuoteBox/QuoteAuthor';
+import { QuoteSource } from "./QuoteBox/QuoteSource";
 import { NewQuote } from './CTAs/NewQuote';
 import { TweetQuote } from './CTAs/TweetQuote';
 import { StarWars } from './assets/quotes.json'
@@ -18,7 +19,7 @@ const shuffledQuotes = shuffle<IQuote>(StarWars)
 const App: React.FC = () => {
   const [index, setIndex] = useState<number>(0)
 
-  let { quote: text, author } = shuffledQuotes[index]
+  let { quote: text, author, source } = shuffledQuotes[index]
 
   useEffect(() => {
     console.table(shuffledQuotes)
@@ -29,6 +30,7 @@ const App: React.FC = () => {
     <main id="quote-box">
       <QuoteText text={ text } />
       <QuoteAuthor author={ author } />
+      <QuoteSource source={ source } />
       <NewQuote onNext={ setIndex } curIndex={ index } />
       <TweetQuote />
     </main>
