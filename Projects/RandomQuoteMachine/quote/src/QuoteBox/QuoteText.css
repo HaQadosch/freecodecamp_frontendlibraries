@@ -2,9 +2,12 @@
 #text::before {
   display: inline-block;
   content: '';
+
   width: 10px;
   height: 10px;
   border-radius: 50%;
+  margin-left: 2px;
+  margin-right: 5px;
 
   background-color: blue;
 }
