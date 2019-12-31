@@ -1,3 +1,30 @@
+
+#preview__cell {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  padding-right: 10px;
+  padding-bottom: 10px;
+
+  background: var(--whisper);
+  background: linear-gradient(150deg, 
+  var(--preview-top) 0%, 
+  var(--preview-bottom) 100%); 
+
+  color: var(--whisper);
+}
+
+label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding-top: 10px;
+}
+
 #preview {
-  max-width: 500px;
+  resize: none;
+  max-width: 450px;
+
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0%);
+  color: var(--whisper);
 }

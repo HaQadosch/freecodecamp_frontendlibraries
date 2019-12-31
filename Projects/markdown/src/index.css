@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-color: var(--whisper);
 }
 
 code {
@@ -16,4 +18,12 @@ code {
   display: grid;
   grid-template-columns: 1fr;
   justify-items: center;
+}
+
+:root {
+  --whisper: hsl(0,3%,93.5%);
+  --markdown-top: #05233f;
+  --markdown-bottom: #fd9c79;
+  --preview-top: #4b1547;
+  --preview-bottom: #eebd7b;
 }
