@@ -1,0 +1,29 @@
+#markdown__cell {
+  display: grid;
+  grid-template-columns: auto 1fr;
+
+  padding-right: 1em;
+  padding-bottom: 1em;
+
+  background: var(--whisper);
+  background: linear-gradient(150deg, 
+    var(--markdown-top) 0%, 
+    var(--markdown-bottom) 100%); 
+
+  color: var(--whisper);
+}
+
+label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  padding-top: 10px;
+}
+
+#editor {
+  resize: none;
+  max-width: 450px;
+
+  border: 1px solid white;
+  background-color: rgba(0, 0, 0, 0%);
+  color: var(--whisper);
+}
