@@ -1,6 +1,7 @@
 import React from 'react'
 import './editor.css'
 
+
 interface IEditor {
   textValue: string
   updateAction: React.Dispatch<React.SetStateAction<string>>
@@ -21,6 +22,7 @@ export const Editor: React.FC<IEditor> = ({ textValue, updateAction }) => {
   )
 
   function handleChange ({ target: { value } }: React.ChangeEvent<HTMLTextAreaElement>): void {
+    console.log({ value })
     if (value !== null) {
       updateAction(value)
     }

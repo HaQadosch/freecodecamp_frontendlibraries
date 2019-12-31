@@ -6,8 +6,10 @@ import './reset.css'
 import { Editor } from './Editor/Editor'
 import { Preview } from './Preview/Preview'
 
+import { preview } from "./Assets/texts.json";
+
 const App: React.FC = () => {
-  const [markdownText, setMarkdownText] = useState<string>('')
+  const [markdownText, setMarkdownText] = useState<string>(preview)
 
   return (
     <main id="app">
