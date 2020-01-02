@@ -7,14 +7,11 @@ interface IDrumPad {
     display: string
   }
   action: React.Dispatch<React.SetStateAction<string>>
+  audio: (src: string) => () => void
 }
 
-export const DrumPad: React.FC<IDrumPad> = ({ padId: { letter, source, display }, action }) => {
-  const handleClick: React.MouseEventHandler<HTMLButtonElement> = () => {
-    console.log({ letter, source, display })
-    action(letter)
-    audio(source)()
-  }
+export const DrumPad: React.FC<IDrumPad> = ({ padId: { letter, source, display }, action, audio }) => {
+
   return (
     <li>
       <button
@@ -23,11 +20,10 @@ export const DrumPad: React.FC<IDrumPad> = ({ padId: { letter, source, display }
         onClick={ handleClick }>{ letter }</button>
     </li>
   )
-}
 
-function audio (src: string) {
-  const audioElt = new window.Audio(src)
-  return function play_ () {
-    audioElt.play()
+  function handleClick (_: React.MouseEvent<HTMLButtonElement>) {
+    console.log({ letter, source, display })
+    action(display)
+    audio(source)()
   }
 }
