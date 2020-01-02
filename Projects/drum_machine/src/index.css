@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#root {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+
+  background-color: var(--whisper);
+}
+
+:root {
+  --whisper: hsl(0,3%,93.5%);
+  --clear: rgba(255, 255, 255, 0.83);
+  --dark: rgba(217, 210, 200, 0.51);
+  --border: rgba(255, 255, 255, 0.20);
+}

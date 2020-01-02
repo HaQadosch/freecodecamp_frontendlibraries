@@ -11,10 +11,10 @@ interface IPads {
   audio: (src: string) => () => void
 }
 
-export const Pads: React.FC<IPads> = ({ action, soundsId, audio }) => {
+export const Pads: React.FC<IPads> = ({ action, soundsId, audio, keyPress }) => {
   return (
     <ul>
-      { soundsId.map((padId) => <DrumPad padId={ padId } key={ padId.letter } action={ action } audio={ audio } />) }
+      { soundsId.map((padId) => <DrumPad padId={ padId } key={ padId.letter } action={ action } audio={ audio } isKeyPressed={ keyPress === padId.letter } />) }
     </ul>
   )
 }
