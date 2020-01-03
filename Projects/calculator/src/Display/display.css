@@ -1,0 +1,19 @@
+section#display {
+  display: grid;
+  place-items: center;
+}
+
+section#sum {
+  place-self: stretch;
+
+  background-color: var(--whisper);
+  border: 1px solid var(--border);
+  box-shadow: -6px -6px 26px 0 var(--clear), 6px 6px 16px 0 var(--dark);
+
+  display: grid;
+  padding-right: 10px;
+}
+
+section#sum > p {
+  place-self: center end;
+}

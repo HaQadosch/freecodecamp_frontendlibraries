@@ -1,6 +1,7 @@
 import React from 'react';
-import './App.css';
 import './reset.css'
+import './App.css';
+import './Buttons/buttons.css'
 
 import { Equals } from "./Buttons/Equals";
 import { Digits } from "./Buttons/Digits";
@@ -13,14 +14,16 @@ export const App: React.FC = () => {
   return (
     <main className="App">
       <Display />
-      <Digits />
-      <Decimal />
-      <OpAdd />
-      <OpSubstract />
-      <OpMultiply />
-      <OpDivide />
-      <Clear />
-      <Equals />
+      <section id="pad">
+        <Digits />
+        <Decimal />
+        <OpAdd />
+        <OpSubstract />
+        <OpMultiply />
+        <OpDivide />
+        <Clear />
+        <Equals />
+      </section>
     </main>
   );
 }

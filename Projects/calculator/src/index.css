@@ -23,8 +23,8 @@ code {
 }
 
 :root {
-  --whisper: hsl(0,3%,93.5%);
-  --clear: rgba(255, 255, 255, 0.83);
-  --dark: rgba(217, 210, 200, 0.51);
-  --border: rgba(255, 255, 255, 0.20);
+  --whisper: hsl(0, 3%, 93.5%);
+  --clear: hsla(0, 0%, 100%, 0.83);
+  --dark: hsla(35, 18.3%, 81.8%, 0.51);
+  --border: hsla(0, 0%, 100%, 0.20);
 }
