@@ -1,6 +1,7 @@
 section#display {
   display: grid;
-  place-items: center;
+  grid-template-rows: 2fr 1fr;
+  place-items: end;
 }
 
 section#sum {
@@ -16,4 +17,16 @@ section#sum {
 
 section#sum > p {
   place-self: center end;
+  font-size: 2em;
+  font-weight: lighter;
+}
+
+section#history > ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  place-items: center;
+
+  font-size: 1.1em;
+  color: gray;
 }

@@ -4,10 +4,15 @@ import './display.css'
 export const Display: React.FC = () => {
   return (
     <section id="display">
-      display
-      <section>hist</section>
+      <section id="history">
+        <ul>
+          <li>456</li>
+          <li>*</li>
+          <li>13 </li>
+        </ul>
+      </section>
       <section id="sum">
-        <p>sum</p>
+        <p>5928</p>
       </section>
     </section>
   )
