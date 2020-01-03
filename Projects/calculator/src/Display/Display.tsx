@@ -1,7 +1,14 @@
 import React from 'react'
 import './display.css'
 
+import { useSelector } from "react-redux";
+import { RootState } from "../Store/rootReducer";
+
 export const Display: React.FC = () => {
+  const { value: total } = useSelector(
+    (state: RootState) => state.total
+  )
+
   return (
     <section id="display">
       <section id="history">
@@ -12,7 +19,7 @@ export const Display: React.FC = () => {
         </ul>
       </section>
       <section id="sum">
-        <p>5928</p>
+        <p>{ total }</p>
       </section>
     </section>
   )
