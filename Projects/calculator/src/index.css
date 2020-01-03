@@ -16,6 +16,9 @@ code {
   display: grid;
   place-items: center;
 
+  min-height: 100vh;
+  max-width: 800px;
+
   background-color: var(--whisper);
 }
 
