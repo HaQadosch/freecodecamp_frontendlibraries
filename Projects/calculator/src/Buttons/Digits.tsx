@@ -1,11 +1,17 @@
 import React from 'react'
 
+import { useDispatch } from 'react-redux'
+import { appendTotal } from "../Store/rootReducer"
+import { AppDispatch } from "../Store/store";
+
+
 interface IDigit {
-  id: string,
+  id: string
   value: number
+  onClick: (value: number) => void
 }
 
-const digits: IDigit[] = [
+const digits: Pick<IDigit, 'id' | 'value'>[] = [
   { id: 'zero', value: 0 },
   { id: 'one', value: 1 },
   { id: 'two', value: 2 },
@@ -18,18 +24,24 @@ const digits: IDigit[] = [
   { id: 'nine', value: 9 },
 ]
 
-const Digit: React.FC<IDigit> = ({ value, id }) => {
+const Digit: React.FC<IDigit> = ({ value, id, onClick }) => {
   return (
-    <button id={ id }>
+    <button id={ id } onClick={ (_: React.MouseEvent<HTMLButtonElement>) => onClick(value) }>
       { value }
     </button>
   )
 }
 
 export const Digits: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch()
+
   return (
     <>
-      { digits.map(({ value, id }) => <Digit value={ value } id={ id } />) }
+      { digits.map(({ value, id }) => <Digit value={ value } id={ id } onClick={ handleClick } />) }
     </>
   )
+
+  function handleClick (value: number) {
+    dispatch(appendTotal({ value }))
+  }
 }

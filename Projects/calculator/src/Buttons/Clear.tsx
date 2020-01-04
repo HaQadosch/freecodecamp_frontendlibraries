@@ -1,9 +1,11 @@
 import React from 'react'
+
 import { useDispatch } from 'react-redux'
-import { clear } from "../Store/rootReducer";
+import { clear } from "../Store/rootReducer"
+import { AppDispatch } from "../Store/store";
 
 export const Clear: React.FC = () => {
-  const dispatch = useDispatch()
+  const dispatch: AppDispatch = useDispatch()
 
   return (
     <button id="clear" onClick={ handleClick }>

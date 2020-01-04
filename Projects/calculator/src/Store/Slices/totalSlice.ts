@@ -5,7 +5,7 @@ interface ITotalState {
   readonly value: number
 }
 
-interface ISetTotalPayload {
+export interface ISetTotalPayload {
   value: number
 }
 
@@ -17,6 +17,12 @@ const setTotalReducer = {
   setTotal: (state: ITotalState, action: PayloadAction<ISetTotalPayload>) => produce(state, (_: Draft<ITotalState>) => action.payload)
 }
 
+const appendTotalReducer = {
+  appendTotal: (state: ITotalState, action: PayloadAction<ISetTotalPayload>) => produce(state, (draft: Draft<ITotalState>) => {
+    draft.value = draft.value * 10 + action.payload.value
+  })
+}
+
 const clearReducer = {
   clear: (state: ITotalState) => produce(state, (_: Draft<ITotalState>) => initialState)
 }
@@ -26,6 +32,7 @@ export const totalSlice = createSlice({
   initialState,
   reducers: {
     ...setTotalReducer,
+    ...appendTotalReducer,
     ...clearReducer
   }
 })
