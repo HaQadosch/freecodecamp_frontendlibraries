@@ -8,4 +8,4 @@ export const rootReducer = combineReducers({
 })
 
 export type RootState = ReturnType<typeof rootReducer>
-console.log(setTotal, clear)
+export { setTotal, clear }
