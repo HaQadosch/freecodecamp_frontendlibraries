@@ -5,7 +5,7 @@ interface ITotalState {
   readonly value: number
 }
 
-interface ISetTotalPaylod {
+interface ISetTotalPayload {
   value: number
 }
 
@@ -14,7 +14,7 @@ const initialState: ITotalState = {
 }
 
 const setTotalReducer = {
-  setTotal: (state: ITotalState, action: PayloadAction<ISetTotalPaylod>) => produce(state, (_: Draft<ITotalState>) => action.payload)
+  setTotal: (state: ITotalState, action: PayloadAction<ISetTotalPayload>) => produce(state, (_: Draft<ITotalState>) => action.payload)
 }
 
 const clearReducer = {

@@ -9,7 +9,7 @@ main {
   box-shadow: -6px -6px 26px 0 var(--clear), 6px 6px 16px 0 var(--dark);
 }
 
-#display {
+#display_history {
   grid-area: display;
 }
 

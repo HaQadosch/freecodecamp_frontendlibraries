@@ -1,21 +1,22 @@
-section#display {
+section#display_history {
   display: grid;
   grid-template-rows: 2fr 1fr;
   place-items: end;
 }
 
-section#sum {
+section#display {
   place-self: stretch;
 
   background-color: var(--whisper);
   border: 1px solid var(--border);
+  border-radius: 15px;
   box-shadow: -6px -6px 26px 0 var(--clear), 6px 6px 16px 0 var(--dark);
 
   display: grid;
   padding-right: 10px;
 }
 
-section#sum > p {
+section#display > p {
   place-self: center end;
   font-size: 2em;
   font-weight: lighter;

@@ -10,7 +10,7 @@ export const Display: React.FC = () => {
   )
 
   return (
-    <section id="display">
+    <section id="display_history">
       <section id="history">
         <ul>
           <li>456</li>
@@ -18,7 +18,7 @@ export const Display: React.FC = () => {
           <li>13 </li>
         </ul>
       </section>
-      <section id="sum">
+      <section id="display">
         <p>{ total }</p>
       </section>
     </section>
