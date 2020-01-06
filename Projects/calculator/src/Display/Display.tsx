@@ -7,6 +7,7 @@ import { RootState } from "../Store/rootReducer";
 export const Display: React.FC = () => {
   const { value: total } = useSelector(({ total }: RootState) => total)
   const history = useSelector(({ history }: RootState) => history)
+  const { tempValue: tempTotal } = useSelector(({ temp }: RootState) => temp)
 
   return (
     <section id="display_history">
@@ -21,6 +22,7 @@ export const Display: React.FC = () => {
           }
         </ul>
       </section>
+      <p id="tempTotal">{ tempTotal }</p>
       <section id="display">
         <p>{ total }</p>
       </section>

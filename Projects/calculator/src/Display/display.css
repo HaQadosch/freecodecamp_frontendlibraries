@@ -1,6 +1,6 @@
 section#display_history {
   display: grid;
-  grid-template-rows: 2fr 1fr;
+  grid-template-rows: 2fr 1.1em 1fr;
   place-items: end;
 }
 
@@ -21,6 +21,15 @@ section#display > p {
   font-size: 2em;
   font-weight: lighter;
 }
+
+ #tempTotal {
+  justify-self: start;
+  align-self: end;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  color: gray;
+  margin-left: 10px;
+ }
 
 section#history > ul {
   list-style: none;

@@ -20,12 +20,13 @@ export interface IHistoryOpsPayload {
 /**
  * { type: 'history/pushHistory', payload: { prevalue, operation } }
  * 
- * We only keep the last 6 operations.
+ * We only keep the last 5 operations.
+ * The List is being displayed from top to bottom, so the operations are stored in reverse.
  */
 const pushHistoryReducer = {
   pushHistory: (state: IHistoryState, action: PayloadAction<IHistoryOpsPayload>) => produce(state, (draft: Draft<IHistoryState>) => {
     draft.push(action.payload)
-    draft.splice(6, 1)
+    if (draft.length === 6) draft.splice(0, 1)
   })
 }
 
