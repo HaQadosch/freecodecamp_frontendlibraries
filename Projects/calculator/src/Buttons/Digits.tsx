@@ -37,7 +37,7 @@ export const Digits: React.FC = () => {
 
   return (
     <>
-      { digits.map(({ value, id }) => <Digit value={ value } id={ id } onClick={ handleClick } />) }
+      { digits.map(({ value, id }) => <Digit value={ value } id={ id } key={ id } onClick={ handleClick } />) }
     </>
   )
 

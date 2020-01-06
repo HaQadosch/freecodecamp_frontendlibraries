@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { clear } from "../Store/rootReducer"
+import { clear, clearHistory } from "../Store/rootReducer"
 import { AppDispatch } from "../Store/store";
 
 export const Clear: React.FC = () => {
@@ -15,6 +15,7 @@ export const Clear: React.FC = () => {
 
   function handleClick () {
     dispatch(clear())
+    dispatch(clearHistory())
   }
 }
 
