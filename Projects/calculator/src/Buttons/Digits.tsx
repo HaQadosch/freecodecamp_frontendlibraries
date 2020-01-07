@@ -1,9 +1,15 @@
 import React from 'react'
 
-import { useDispatch } from 'react-redux'
-import { appendTotal } from "../Store/rootReducer"
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  RootState,
+  appendTotal, setTotal,
+  setState,
+  clearHistory,
+  clearTemp
+} from "../Store/rootReducer"
 import { AppDispatch } from "../Store/store";
-
+import { Status } from "../Store/Slices/statusSlice";
 
 interface IDigit {
   id: string
@@ -34,6 +40,7 @@ const Digit: React.FC<IDigit> = ({ value, id, onClick }) => {
 
 export const Digits: React.FC = () => {
   const dispatch: AppDispatch = useDispatch()
+  const { state: status } = useSelector(({ status }: RootState) => status)
 
   return (
     <>
@@ -42,6 +49,23 @@ export const Digits: React.FC = () => {
   )
 
   function handleClick (value: number) {
-    dispatch(appendTotal({ value }))
+    switch (status) {
+      case Status.FirstInput:
+      case Status.TotalInput:
+        dispatch(clearHistory())
+        dispatch(clearTemp())
+        dispatch(setTotal({ value }))
+        dispatch(setState({ state: Status.FollowUpInput }))
+        break
+      case Status.FollowUpInput:
+        dispatch(appendTotal({ value }))
+        break
+      case Status.OperatorInput:
+        dispatch(appendTotal({ value }))
+        dispatch(setState({ state: Status.FollowUpInput }))
+        break
+      default:
+      // Do nothing. 
+    }
   }
 }

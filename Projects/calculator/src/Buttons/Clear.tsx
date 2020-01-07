@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { useDispatch } from 'react-redux'
-import { clear, clearHistory } from "../Store/rootReducer"
+import { clear, clearHistory, clearTemp, setState } from "../Store/rootReducer"
 import { AppDispatch } from "../Store/store";
+import { Status } from "../Store/Slices/statusSlice";
 
 export const Clear: React.FC = () => {
   const dispatch: AppDispatch = useDispatch()
@@ -16,6 +17,8 @@ export const Clear: React.FC = () => {
   function handleClick () {
     dispatch(clear())
     dispatch(clearHistory())
+    dispatch(clearTemp())
+    dispatch(setState({ state: Status.FirstInput }))
   }
 }
 

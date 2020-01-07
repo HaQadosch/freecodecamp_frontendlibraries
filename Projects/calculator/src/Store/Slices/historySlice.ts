@@ -17,6 +17,10 @@ export interface IHistoryOpsPayload {
   operator: string
 }
 
+export interface IHistoryReplacePayload {
+  operator: string
+}
+
 /**
  * { type: 'history/pushHistory', payload: { prevalue, operation } }
  * 
@@ -30,11 +34,18 @@ const pushHistoryReducer = {
   })
 }
 
+const replaceHistoryReducer = {
+  replaceHistory: (state: IHistoryState, action: PayloadAction<IHistoryReplacePayload>) => produce(state, (draft: Draft<IHistoryState>) => {
+    draft[draft.length - 1].operator = action.payload.operator
+  })
+}
+
 export const historySlice = createSlice({
   name: 'history',
   initialState,
   reducers: {
     ...clearReducer,
-    ...pushHistoryReducer
+    ...pushHistoryReducer,
+    ...replaceHistoryReducer
   }
 })
