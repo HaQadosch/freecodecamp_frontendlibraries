@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { pushHistory, RootState, setTotal, setTemp } from "../Store/rootReducer"
 import { AppDispatch } from "../Store/store"
 
+import { operate } from "../Utils/ops";
+
 interface IOperatorButton {
   operator: string
   id: string
@@ -11,8 +13,8 @@ interface IOperatorButton {
 
 const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
   const dispatch: AppDispatch = useDispatch()
-  const { value: total } = useSelector(({ total }: RootState) => total)
   const history = useSelector(({ history }: RootState) => history)
+  const { value: total } = useSelector(({ total }: RootState) => total)
 
   return (
     <button id={ id } onClick={ handleClick }>
@@ -30,21 +32,6 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
     }, { prevValue: 0, operator: '+' })
     dispatch(setTemp({ tempValue: temp.prevValue }))
     dispatch(setTotal({ value: 0 }))
-  }
-}
-
-function operate (operator: string) {
-  switch (operator) {
-    case '+':
-      return (a: number, b: number): number => a + b
-    case '-':
-      return (a: number, b: number): number => a - b
-    case '*':
-      return (a: number, b: number): number => a * b
-    case '/':
-      return (a: number, b: number): number => a / b
-    default:
-      return (a: number): number => a
   }
 }
 
