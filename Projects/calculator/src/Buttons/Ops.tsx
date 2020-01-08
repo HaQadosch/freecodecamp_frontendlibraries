@@ -25,7 +25,7 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
   const { tempValue } = useSelector(({ temp }: RootState) => temp)
 
   return (
-    <button id={ id } onClick={ handleClick }>
+    <button id={ id } onClick={ handleClick } className={ id === 'substract' && status === Status.MaybeNegative ? 'negative' : '' }>
       { operator }
     </button>
   )

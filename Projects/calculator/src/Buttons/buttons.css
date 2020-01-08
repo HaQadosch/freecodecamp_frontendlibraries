@@ -70,3 +70,14 @@ button {
   border: 1px solid var(--border);
   box-shadow: -6px -6px 26px 0 var(--clear), 6px 6px 16px 0 var(--dark);
 }
+
+.negative::after {
+  display: block;
+  content: '';
+  width: 31px;
+  height: 3px;
+  color: red;
+  border-radius: 25px;
+  background-color: red;
+  border: 1px solid red;
+}
