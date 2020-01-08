@@ -2,8 +2,8 @@ import { produce, Draft } from "immer"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 type IHistoryState = {
-  prevValue: number
-  operator: string
+  readonly prevValue: string
+  readonly operator: string
 }[]
 
 const initialState: IHistoryState = []
@@ -13,7 +13,7 @@ const clearReducer = {
 }
 
 export interface IHistoryOpsPayload {
-  prevValue: number
+  prevValue: string
   operator: string
 }
 

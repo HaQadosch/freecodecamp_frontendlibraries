@@ -38,10 +38,10 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
           operator
         }))
         const temp = history.concat([{ prevValue: total, operator }]).reduce((accHistory, curHistory) => {
-          return { prevValue: operate(accHistory.operator)(accHistory.prevValue, curHistory.prevValue), operator: curHistory.operator }
+          return { prevValue: operate(accHistory.operator)(Number.parseFloat(accHistory.prevValue), Number.parseFloat(curHistory.prevValue)).toString(10), operator: curHistory.operator }
         })
         dispatch(setTemp({ tempValue: temp.prevValue }))
-        dispatch(setTotal({ value: 0 }))
+        dispatch(setTotal({ value: '0' }))
         dispatch(setState({ state: Status.OperatorInput }))
         break
       case Status.OperatorInput: // After pressing a operator.
@@ -77,7 +77,7 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
           prevValue: total,
           operator
         }))
-        dispatch(setTotal({ value: 0 }))
+        dispatch(setTotal({ value: '0' }))
         dispatch(setState({ state: Status.OperatorInput }))
         break
       case Status.FirstInput: // When this is the first button you press.
@@ -85,7 +85,7 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
         if (operator === '-') {
           dispatch(setState({ state: Status.MaybeNegative }))
           dispatch(setTemp({
-            tempValue: 0,
+            tempValue: '0',
             tempSign: '-'
           }))
         }

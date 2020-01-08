@@ -8,26 +8,26 @@ import {
   clearHistory,
   clearTemp
 } from "../Store/rootReducer"
-import { AppDispatch } from "../Store/store";
-import { Status } from "../Store/Slices/statusSlice";
+import { AppDispatch } from "../Store/store"
+import { Status } from "../Store/Slices/statusSlice"
 
 interface IDigit {
   id: string
-  value: number
-  onClick: (value: number) => void
+  value: string
+  onClick: (value: string) => void
 }
 
 const digits: Pick<IDigit, 'id' | 'value'>[] = [
-  { id: 'zero', value: 0 },
-  { id: 'one', value: 1 },
-  { id: 'two', value: 2 },
-  { id: 'three', value: 3 },
-  { id: 'four', value: 4 },
-  { id: 'five', value: 5 },
-  { id: 'six', value: 6 },
-  { id: 'seven', value: 7 },
-  { id: 'eight', value: 8 },
-  { id: 'nine', value: 9 },
+  { id: 'zero', value: '0' },
+  { id: 'one', value: '1' },
+  { id: 'two', value: '2' },
+  { id: 'three', value: '3' },
+  { id: 'four', value: '4' },
+  { id: 'five', value: '5' },
+  { id: 'six', value: '6' },
+  { id: 'seven', value: '7' },
+  { id: 'eight', value: '8' },
+  { id: 'nine', value: '9' },
 ]
 
 const Digit: React.FC<IDigit> = ({ value, id, onClick }) => {
@@ -41,6 +41,7 @@ const Digit: React.FC<IDigit> = ({ value, id, onClick }) => {
 export const Digits: React.FC = () => {
   const dispatch: AppDispatch = useDispatch()
   const { state: status } = useSelector(({ status }: RootState) => status)
+  const { value: total } = useSelector(({ total }: RootState) => total)
 
   return (
     <>
@@ -48,7 +49,7 @@ export const Digits: React.FC = () => {
     </>
   )
 
-  function handleClick (value: number) {
+  function handleClick (value: string): void {
     switch (status) {
       case Status.FirstInput:
       case Status.TotalInput:
@@ -65,8 +66,7 @@ export const Digits: React.FC = () => {
         dispatch(setState({ state: Status.FollowUpInput }))
         break
       case Status.MaybeNegative:
-        const negValue = value * -1
-        dispatch(setTotal({ value: negValue }))
+        dispatch(setTotal({ value: `-${ total }` }))
         dispatch(setState({ state: Status.FollowUpInput }))
         break
       default:

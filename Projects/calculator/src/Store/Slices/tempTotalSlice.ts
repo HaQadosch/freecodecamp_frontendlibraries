@@ -2,18 +2,18 @@ import { produce, Draft } from "immer"
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 type ITempState = {
-  tempValue: number
-  tempSign?: string // Force the display of negative sign.
+  readonly tempValue: string
+  readonly tempSign?: string // Force the display of negative sign.
 }
 
-const initialState: ITempState = { tempValue: 0 }
+const initialState: ITempState = { tempValue: '0' }
 
 const clearReducer = {
   clear: (state: ITempState) => produce(state, (_: Draft<ITempState>) => initialState)
 }
 
 export interface ISetTempPayload {
-  tempValue: number
+  tempValue: string
   tempSign?: string
 }
 
