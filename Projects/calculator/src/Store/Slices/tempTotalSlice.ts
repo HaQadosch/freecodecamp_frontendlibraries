@@ -3,6 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 type ITempState = {
   tempValue: number
+  tempSign?: string // Force the display of negative sign.
 }
 
 const initialState: ITempState = { tempValue: 0 }
@@ -13,6 +14,7 @@ const clearReducer = {
 
 export interface ISetTempPayload {
   tempValue: number
+  tempSign?: string
 }
 
 const setTempReducer = {

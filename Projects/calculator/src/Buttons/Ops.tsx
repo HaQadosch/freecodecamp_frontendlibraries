@@ -22,6 +22,7 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
   const history = useSelector(({ history }: RootState) => history)
   const { value: total } = useSelector(({ total }: RootState) => total)
   const { state: status } = useSelector(({ status }: RootState) => status)
+  const { tempValue } = useSelector(({ temp }: RootState) => temp)
 
   return (
     <button id={ id } onClick={ handleClick }>
@@ -31,24 +32,46 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
 
   function handleClick (_: React.MouseEvent<HTMLButtonElement>): void {
     switch (status) {
-      case Status.FollowUpInput: // First time pushing for operator.
+      case Status.FollowUpInput: // After entering a valid number.
         dispatch(pushHistory({
           prevValue: total,
           operator
         }))
         const temp = history.concat([{ prevValue: total, operator }]).reduce((accHistory, curHistory) => {
           return { prevValue: operate(accHistory.operator)(accHistory.prevValue, curHistory.prevValue), operator: curHistory.operator }
-        }, { prevValue: 0, operator: '+' })
+        })
         dispatch(setTemp({ tempValue: temp.prevValue }))
         dispatch(setTotal({ value: 0 }))
         dispatch(setState({ state: Status.OperatorInput }))
         break
-      case Status.OperatorInput: // Second time pushing for operator, this is to replace the previous one.
-        dispatch(replaceHistory({
-          operator
-        }))
+      case Status.OperatorInput: // After pressing a operator.
+        // Second time pushing for operator, this is to replace the previous one.
+        // Unless you input a - which might indicate that the second number is negative.
+        if (operator === '-') {
+          dispatch(setState({ state: Status.MaybeNegative }))
+          dispatch(setTemp({
+            tempSign: '',
+            tempValue
+          }))
+        } else {
+          dispatch(replaceHistory({
+            operator
+          }))
+        }
         break
-      case Status.TotalInput: // Using the result of the previous calculation.
+      case Status.MaybeNegative: // Just after pressing the - button.
+        // That was just a mistake, overwrite with the last operator.
+        if (operator === '-') {
+          // becomes a substract operation.
+          dispatch(setState({ state: Status.OperatorInput }))
+        } else {
+          dispatch(replaceHistory({
+            operator
+          }))
+        }
+        break
+      case Status.TotalInput: // Just after the end of the previous evaluation.
+        // Using the result of the previous calculation.
         dispatch(clearHistory())
         dispatch(pushHistory({
           prevValue: total,
@@ -57,7 +80,16 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
         dispatch(setTotal({ value: 0 }))
         dispatch(setState({ state: Status.OperatorInput }))
         break
-      case Status.FirstInput:
+      case Status.FirstInput: // When this is the first button you press.
+        // The `-` ops in considered minus sign.
+        if (operator === '-') {
+          dispatch(setState({ state: Status.MaybeNegative }))
+          dispatch(setTemp({
+            tempValue: 0,
+            tempSign: '-'
+          }))
+        }
+        break
       default:
       // Do nothing. 
     }

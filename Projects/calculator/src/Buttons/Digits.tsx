@@ -64,6 +64,11 @@ export const Digits: React.FC = () => {
         dispatch(appendTotal({ value }))
         dispatch(setState({ state: Status.FollowUpInput }))
         break
+      case Status.MaybeNegative:
+        const negValue = value * -1
+        dispatch(setTotal({ value: negValue }))
+        dispatch(setState({ state: Status.FollowUpInput }))
+        break
       default:
       // Do nothing. 
     }

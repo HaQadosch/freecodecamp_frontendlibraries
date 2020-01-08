@@ -41,7 +41,7 @@ export const Equals: React.FC = () => {
           operator: '='
         }))
         {
-          const lastOperator = history[history.length - 1].operator
+          const lastOperator = history[history.length - 1]?.operator
           const total = operate(lastOperator)(tempTotal, lastValue)
           dispatch(setTemp({ tempValue: total }))
           dispatch(setTotal({ value: total }))

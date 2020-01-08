@@ -14,7 +14,8 @@ export enum Status {
   FirstInput = 'FirstInput',
   FollowUpInput = 'FollowUpInput',
   OperatorInput = 'OperatorInput',
-  TotalInput = 'TotalInput'
+  TotalInput = 'TotalInput',
+  MaybeNegative = 'MaybeNegative'
 }
 
 interface ICalcState {
