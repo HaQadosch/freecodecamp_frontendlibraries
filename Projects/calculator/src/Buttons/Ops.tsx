@@ -3,7 +3,7 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {
   RootState,
-  pushHistory, replaceHistory,
+  pushHistory, replaceHistory, clearHistory,
   setTotal,
   setTemp,
   setState
@@ -48,7 +48,15 @@ const OperatorButton: React.FC<IOperatorButton> = ({ id, operator }) => {
           operator
         }))
         break
-      case Status.TotalInput:
+      case Status.TotalInput: // Using the result of the previous calculation.
+        dispatch(clearHistory())
+        dispatch(pushHistory({
+          prevValue: total,
+          operator
+        }))
+        dispatch(setTotal({ value: 0 }))
+        dispatch(setState({ state: Status.OperatorInput }))
+        break
       case Status.FirstInput:
       default:
       // Do nothing. 
