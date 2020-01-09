@@ -1,0 +1,22 @@
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: 'pad display';
+
+  border-radius: 12px;
+  background-color: var(--whisper);
+  border: 1px solid var(--border);
+  box-shadow: -6px -6px 26px 0 var(--clear), 6px 6px 16px 0 var(--dark);
+}
+
+#display_history {
+  grid-area: display;
+}
+
+#pad {
+  grid-area: pad;
+}
+
+main > section {
+  margin: 10px;
+}
