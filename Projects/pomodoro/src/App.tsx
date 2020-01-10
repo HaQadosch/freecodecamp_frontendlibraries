@@ -3,8 +3,7 @@ import './App.css';
 
 export const App: React.FC = () => {
   return (
-    <article className="App">
-    </article>
+    <article className="app"></article>
   );
 }
 
