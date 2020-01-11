@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 
 interface ISession {
 
@@ -8,37 +8,37 @@ export const Session: React.FC<ISession> = () => {
 
   return (
     <div>
-
+      Session Length <SessionLength />
+      <SessionInc onClick={ () => { } } />
+      <SessionDec onClick={ () => { } } />
     </div>
   )
 }
 
 interface ISessionInc {
-
+  onClick: MouseEventHandler
 }
 
 export const SessionInc: React.FC<ISessionInc> = () => {
 
   return (
-    <div>
-      {/* Insert generic looking inc button
-        SessionInc captures the click and do wathever with it.
-      */}
-    </div>
+    <button>
+      Inc Session
+    </button>
   )
 }
 
 
 interface ISessionDec {
-
+  onClick: MouseEventHandler
 }
 
 export const SessionDec: React.FC<ISessionDec> = () => {
 
   return (
-    <div>
-
-    </div>
+    <button>
+      Dec Session
+    </button>
   )
 }
 
@@ -49,8 +49,8 @@ interface ISessionLength {
 export const SessionLength: React.FC<ISessionLength> = () => {
 
   return (
-    <div>
-
-    </div>
+    <span>
+      25:00
+    </span>
   )
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 
 interface IBreak {
 
@@ -8,35 +8,37 @@ export const Break: React.FC<IBreak> = () => {
 
   return (
     <div>
-
+      Break Length <BreakLength />
+      <BreakInc onClick={ () => { } } />
+      <BreakDec onClick={ () => { } } />
     </div>
   )
 }
 
 interface IBreakInc {
-
+  onClick: MouseEventHandler
 }
 
 export const BreakInc: React.FC<IBreakInc> = () => {
 
   return (
-    <div>
-
-    </div>
+    <button>
+      Inc Break
+    </button>
   )
 }
 
 
 interface IBreakDec {
-
+  onClick: MouseEventHandler
 }
 
 export const BreakDec: React.FC<IBreakDec> = () => {
 
   return (
-    <div>
-
-    </div>
+    <button>
+      Dec Break
+    </button>
   )
 }
 
@@ -47,9 +49,9 @@ interface IBreakLength {
 export const BreakLength: React.FC<IBreakLength> = () => {
 
   return (
-    <div>
-
-    </div>
+    <span>
+      05:00
+    </span>
   )
 }
 

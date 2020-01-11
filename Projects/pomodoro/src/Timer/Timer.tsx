@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { MouseEventHandler } from 'react'
 
 interface ITimer {
 
@@ -8,32 +8,34 @@ export const Timer: React.FC<ITimer> = () => {
 
   return (
     <div>
-
+      Timer
+      <TimerStartStop onClick={ () => { } } />
+      <TimerReset onClick={ () => { } } />
     </div>
   )
 }
 
 interface ITimerStartStop {
-
+  onClick: MouseEventHandler
 }
 
 export const TimerStartStop: React.FC<ITimerStartStop> = () => {
 
   return (
-    <div>
-
-    </div>
+    <button>
+      Start/Stop
+    </button>
   )
 }
 interface ITimerReset {
-
+  onClick: MouseEventHandler
 }
 
 export const TimerReset: React.FC<ITimerReset> = () => {
 
   return (
-    <div>
-
-    </div>
+    <button>
+      Reset
+    </button>
   )
 }
