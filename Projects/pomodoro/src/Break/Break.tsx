@@ -39,3 +39,17 @@ export const BreakDec: React.FC<IBreakDec> = () => {
     </div>
   )
 }
+
+interface IBreakLength {
+
+}
+
+export const BreakLength: React.FC<IBreakLength> = () => {
+
+  return (
+    <div>
+
+    </div>
+  )
+}
+

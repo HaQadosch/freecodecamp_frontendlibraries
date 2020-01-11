@@ -41,3 +41,16 @@ export const SessionDec: React.FC<ISessionDec> = () => {
     </div>
   )
 }
+
+interface ISessionLength {
+
+}
+
+export const SessionLength: React.FC<ISessionLength> = () => {
+
+  return (
+    <div>
+
+    </div>
+  )
+}
