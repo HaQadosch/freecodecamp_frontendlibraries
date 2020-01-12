@@ -1,11 +1,23 @@
 /* app.css */
 .app {
-  width: 300px;
-  height: 200px;
-  background: #EFEEEE;
+  width: 90vw;
+  height: 90vh;
 
+  /* neumorphism card */
+  /* background: #EFEEEE;
   border: 1px solid rgba(255, 255, 255, 0.20);
   border-radius: 12px;
-  box-shadow: 6px 6px 16px 0 rgba(217, 210, 200, 0.51), -6px -6px 26px 0 rgba(255, 255, 255, 0.83);
+  box-shadow: 6px 6px 16px 0 rgba(217, 210, 200, 0.51), -6px -6px 26px 0 rgba(255, 255, 255, 0.83); */
+  background: hsla(210, 56%, 93%, 1);
+  border: 1px solid hsla(213, 50%, 92%, 1);
+  border-radius: 12px;
+  box-shadow: 
+    6px 6px 16px 0 var(--box-shadow-dark),
+    -6px -6px 26px 0 var(--box-shadow-clear);
 
+}
+
+:root {
+  --box-shadow-clear: hsla(0, 0%, 100%, 0.83);
+  --box-shadow-dark: hsla(214.3, 18.9%, 71%, 1);
 }
