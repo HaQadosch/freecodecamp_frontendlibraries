@@ -9,9 +9,9 @@ export const Break: React.FC<IBreak> = () => {
 
   return (
     <div id="break-label">
-      Break Length <BreakLength duration={ duration } />
-      <BreakInc onClick={ () => { } } />
-      <BreakDec onClick={ () => { } } />
+      Break Length <BreakLength duration={duration} />
+      <BreakInc onClick={() => { }} />
+      <BreakDec onClick={() => { }} />
     </div>
   )
 }
@@ -23,7 +23,7 @@ interface IBreakInc {
 export const BreakInc: React.FC<IBreakInc> = ({ onClick }) => {
 
   return (
-    <button id="break-increment" onClick={ onClick }>
+    <button id="break-increment" onClick={onClick}>
       Inc Break
     </button>
   )
@@ -37,7 +37,7 @@ interface IBreakDec {
 export const BreakDec: React.FC<IBreakDec> = ({ onClick }) => {
 
   return (
-    <button id="break-decrement" onClick={ onClick }>
+    <button id="break-decrement" onClick={onClick}>
       Dec Break
     </button>
   )
@@ -57,7 +57,7 @@ export const BreakLength: React.FC<IBreakLength> = ({ duration = _5minutes }) =>
 
   return (
     <span id="break-length">
-      { `${ minutes < 10 ? '0' : '' }${ minutes }:${ secondes < 10 ? '0' : '' }${ secondes }` }
+      {`${minutes < 10 ? '0' : ''}${minutes}:${secondes < 10 ? '0' : ''}${secondes}`}
     </span>
   )
 }
