@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Timer, SessionType } from './Timer/Timer';
 import { Session } from './Session/Session';
 import { Break } from './Break/Break';
@@ -10,11 +10,31 @@ const _25minutes = 25 * 60
 export const App: React.FC = () => {
   const [sessionDuration, setSessionDuration] = useState(_25minutes)
   const [breakDuration, setBreakDuration] = useState(_5minutes)
+  const [running, setRunning] = useState(false)
+  const [session, setSession] = useState(SessionType.Session)
+  const [timeLeft, setTimeLeft] = useState(session === SessionType.Session ? sessionDuration : breakDuration)
+
+  useEffect(() => {
+    const intervalId = running
+      ? setInterval(() => { setTimeLeft(time => time - 1) }, 1000)
+      : 0
+    return () => {
+      clearInterval(intervalId as NodeJS.Timeout)
+    }
+  }, [running])
+
+  useEffect(() => {
+    if (timeLeft <= 0) {
+      setSession(session => session === SessionType.Session ? SessionType.Break : SessionType.Session)
+      setTimeLeft(session === SessionType.Session ? sessionDuration : breakDuration)
+    }
+    // eslint-disable-next-line
+  }, [timeLeft])
 
   return (
     <article className="app">
       <h1>Clock</h1>
-      <Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } reset={ reset } />
+      <Timer running={ running } setRunning={ setRunning } timeLeft={ timeLeft } sessionType={ session } reset={ reset } />
       <Session sessionDuration={ sessionDuration } setSessionDuration={ setSessionDuration } />
       <Break breakDuration={ breakDuration } setBreakDuration={ setBreakDuration } />
       <Beep />

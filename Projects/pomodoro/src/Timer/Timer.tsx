@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useState } from 'react'
+import React, { MouseEventHandler } from 'react'
 
 export enum SessionType {
   Session = "Session",
@@ -10,16 +10,16 @@ interface ITimer {
   timeLeft: number
   sessionType: SessionType
   reset: () => void
+  running: boolean
+  setRunning: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const _60minutes = 60 * 60
 
-export const Timer: React.FC<ITimer> = ({ timeLeft = _60minutes, sessionType = SessionType.Session, reset }) => {
+export const Timer: React.FC<ITimer> = ({ running, setRunning, timeLeft = _60minutes, sessionType = SessionType.Session, reset }) => {
   const safeTimeLeft: number = timeLeft < 0 ? 0 : timeLeft > _60minutes ? _60minutes : timeLeft
-  const minutesLeft = Math.ceil(safeTimeLeft / 60)
-  const secondesLeft = safeTimeLeft - (minutesLeft * 60)
-
-  const [running, setRunning] = useState(false)
+  let minutesLeft = Math.floor(safeTimeLeft / 60)
+  let secondesLeft = safeTimeLeft - (minutesLeft * 60)
 
   return (
     <article id="timer">

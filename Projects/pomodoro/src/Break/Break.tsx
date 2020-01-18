@@ -54,7 +54,7 @@ interface IBreakLength {
 
 export const BreakLength: React.FC<IBreakLength> = ({ duration = _5minutes }) => {
   const safeDuration: number = duration < _1minute ? _1minute : duration > _60minutes ? _60minutes : duration
-  const safeMinutes = Math.ceil(safeDuration / 60)
+  const safeMinutes = Math.floor(safeDuration / 60)
 
   return (
     <span id="break-length">

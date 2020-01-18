@@ -4,40 +4,47 @@ import { Timer, TimerReset, TimerStartStop, SessionType } from '../Timer/Timer'
 
 const _25minutes = 25 * 60
 
+const defaultTimerProps = {
+  timeLeft: _25minutes,
+  sessionType: SessionType.Session,
+  reset: () => { },
+  running: false,
+  setRunning: () => { }
+}
 describe('<Timer />', () => {
 
   it('should have the attribute id="timer-label"', () => {
-    const { container } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } reset={ () => { } } />)
+    const { container } = render(<Timer { ...defaultTimerProps } />)
     const idTimerLabels = container.querySelectorAll('#timer-label')
     expect(idTimerLabels).toHaveLength(1)
   })
 
   it('should display a string indicating a session is initialised', () => {
-    const { getByText } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } reset={ () => { } } />)
+    const { getByText } = render(<Timer { ...defaultTimerProps } />)
     const component = getByText(/Session/i)
     expect(component).toBeInTheDocument()
   })
 
   it('should have the attribute id="time-left"', () => {
-    const { container } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } reset={ () => { } } />)
+    const { container } = render(<Timer { ...defaultTimerProps } />)
     const idTimerLefts = container.querySelectorAll('#time-left')
     expect(idTimerLefts).toHaveLength(1)
   })
 
   it('should display the time left in mm:ss format', () => {
-    const { getByText } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } reset={ () => { } } />)
+    const { getByText } = render(<Timer { ...defaultTimerProps } />)
     const component = getByText(/\d\d:\d\d/i)
     expect(component).toBeInTheDocument()
   })
 
   it('should load with time left 25:00', () => {
-    const { getByText } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } reset={ () => { } } />)
+    const { getByText } = render(<Timer { ...defaultTimerProps } />)
     const component = getByText(/25:00/i)
     expect(component).toBeInTheDocument()
   })
 
   it('should not display time < 00:00', () => {
-    const { getByText } = render(<Timer timeLeft={ -1 } sessionType={ SessionType.Session } reset={ () => { } } />)
+    const { getByText } = render(<Timer { ...defaultTimerProps } timeLeft={ -1 } />)
     const component = getByText(/00:00/i)
     expect(component).toBeInTheDocument()
   })
