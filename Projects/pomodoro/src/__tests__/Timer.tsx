@@ -1,37 +1,78 @@
 import React from 'react'
-import { render } from '@testing-library/react'
-import { Timer, TimerReset, TimerStartStop } from '../Timer/Timer'
+import { render, fireEvent } from '@testing-library/react'
+import { Timer, TimerReset, TimerStartStop, SessionType } from '../Timer/Timer'
+
+const _25minutes = 25 * 60
 
 describe('<Timer />', () => {
-  const { container } = render(<Timer />)
 
-  it.todo('should have the attribute id="timer-label"')
+  it('should have the attribute id="timer-label"', () => {
+    const { container } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } />)
+    const idTimerLabels = container.querySelectorAll('#timer-label')
+    expect(idTimerLabels).toHaveLength(1)
+  })
 
-  it.todo('should display a string indicating a session is initialised') // e.g. "Session"
+  it('should display a string indicating a session is initialised', () => {
+    const { getByText } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } />)
+    const component = getByText(/Session/i)
+    expect(component).toBeInTheDocument()
+  })
 
-  it.todo('should have the attribute id="time-left"')
+  it('should have the attribute id="time-left"', () => {
+    const { container } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } />)
+    const idTimerLefts = container.querySelectorAll('#time-left')
+    expect(idTimerLefts).toHaveLength(1)
+  })
 
-  it.todo('should display the time left in mm:ss format')
+  it('should display the time left in mm:ss format', () => {
+    const { getByText } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } />)
+    const component = getByText(/\d\d:\d\d/i)
+    expect(component).toBeInTheDocument()
+  })
 
-  it.todo('should load with time left 25:00')
+  it('should load with time left 25:00', () => {
+    const { getByText } = render(<Timer timeLeft={ _25minutes } sessionType={ SessionType.Session } />)
+    const component = getByText(/25:00/i)
+    expect(component).toBeInTheDocument()
+  })
 
-  it.todo('should not display time < 00:00')
+  it('should not display time < 00:00', () => {
+    const { getByText } = render(<Timer timeLeft={ -1 } sessionType={ SessionType.Session } />)
+    const component = getByText(/00:00/i)
+    expect(component).toBeInTheDocument()
+  })
 })
 
 describe('<TimerStartStop />', () => {
   const handleClick = jest.fn()
-  const { container } = render(<TimerStartStop onClick={ handleClick } />)
 
-  it.todo('should have the attribute id="start_stop"')
+  it('should have the attribute id="start_stop"', () => {
+    const { container } = render(<TimerStartStop onClick={ handleClick } />)
+    const idStartStops = container.querySelectorAll('#start_stop')
+    expect(idStartStops).toHaveLength(1)
+  })
 
-  it.todo('should be clickable')
+  it('should be clickable', () => {
+    const { container } = render(<TimerStartStop onClick={ handleClick } />)
+    fireEvent.click(container.querySelector('button') as HTMLElement)
+    expect(handleClick).toHaveBeenCalled()
+    expect(handleClick).toBeCalledTimes(1)
+  })
 })
 
 describe('<TimerReset />', () => {
   const handleClick = jest.fn()
-  const { container } = render(<TimerReset onClick={ handleClick } />)
 
-  it.todo('should have the attribute id="reset"')
+  it('should have the attribute id="reset"', () => {
+    const { container } = render(<TimerReset onClick={ handleClick } />)
+    const idResets = container.querySelectorAll('#reset')
+    expect(idResets).toHaveLength(1)
+  })
 
-  it.todo('should be clickable')
+  it('should be clickable', () => {
+    const { container } = render(<TimerReset onClick={ handleClick } />)
+    fireEvent.click(container.querySelector('button') as HTMLElement)
+    expect(handleClick).toHaveBeenCalled()
+    expect(handleClick).toBeCalledTimes(1)
+  })
 })

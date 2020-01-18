@@ -24,7 +24,7 @@ export default {
   }
 }
 
-export const Timer = () => <BreakLength duration={5 * 60} />
+export const Timer = () => <BreakLength duration={5} />
 export const Increment = () => <BreakInc onClick={action('clicked')} />
 export const Decrement = () => <BreakDec onClick={action('clicked')} />
 export const Full = () => <Break onClick={action('clicked')} />

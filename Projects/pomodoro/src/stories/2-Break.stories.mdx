@@ -1,16 +1,43 @@
 import { Meta, Story, Preview } from '@storybook/addon-docs/blocks';
 
-import { Break, BreakInc, BreakDec, BreakLength } from '../Break/Break'
+import { Break, BreakLength, BreakInc, BreakDec } from '../Break/Break'
+import { Session } from '../Session/Session'
+import { Timer, SessionType } from "../Timer/Timer"
 
-<Meta title="MDX/Checkbox" component={Break} />
+<Meta 
+  title="Components" 
+  component={Break, Session} 
+  subcomponents={ BreakLength, BreakInc, BreakDec }
+/>
 
-# Break
+# Components
+## Break
 
-With `MDX` we can define a story for `Break` right in the middle of our
-markdown documentation.
+Define and set up the length of a `break`.
 
 <Preview>
-  <Story name="all checkboxes">
+  <Story name="break">
     <Break />
   </Story>
 </Preview>
+
+## Session
+
+Define and set up the length of a `session`.
+
+<Preview>
+  <Story name="session">
+    <Session />
+  </Story>
+</Preview>
+
+## Timer
+
+Display the time left for the current session.
+
+<Preview>
+  <Story name="timer">
+    <Timer duration={25*60} sessionType={SessionType.Session} />
+  </Story>
+</Preview>
+
