@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from 'react'
 
+const _1minute = 60
 const _5minutes = 5 * 60
 const _60minutes = 60 * 60
 
@@ -9,7 +10,6 @@ interface IBreak {
 }
 
 export const Break: React.FC<IBreak> = ({ breakDuration, setBreakDuration }) => {
-  const _1minute = 60
 
   return (
     <div id="break-label">
@@ -53,7 +53,7 @@ interface IBreakLength {
 
 
 export const BreakLength: React.FC<IBreakLength> = ({ duration = _5minutes }) => {
-  const safeDuration: number = duration < 0 ? 0 : duration > _60minutes ? _60minutes : duration
+  const safeDuration: number = duration < _1minute ? _1minute : duration > _60minutes ? _60minutes : duration
   const safeMinutes = Math.ceil(safeDuration / 60)
 
   return (

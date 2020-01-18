@@ -24,7 +24,7 @@ export const Timer: React.FC<ITimer> = ({ timeLeft = _60minutes, sessionType = S
   return (
     <article id="timer">
       <div id="timer-label">
-        { sessionType } { running ? 'running' : 'not running' }
+        { sessionType } { running ? 'running' : 'stopped' }
       </div>
       <div id="time-left">
         { `${ minutesLeft < 10 ? '0' : '' }${ minutesLeft }:${ secondesLeft < 10 ? '0' : '' }${ secondesLeft }` }

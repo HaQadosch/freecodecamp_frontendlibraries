@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from 'react'
 
+const _1minute = 1 * 60
 const _25minutes = 25 * 60
 const _60minutes = 60 * 60
 
@@ -9,7 +10,6 @@ interface ISession {
 }
 
 export const Session: React.FC<ISession> = ({ sessionDuration, setSessionDuration }) => {
-  const _1minute = 60
 
   return (
     <div id="session-label">
@@ -53,7 +53,7 @@ interface ISessionLength {
 
 
 export const SessionLength: React.FC<ISessionLength> = ({ duration = _25minutes }) => {
-  const safeDuration: number = duration < 0 ? 0 : duration > _60minutes ? _60minutes : duration
+  const safeDuration: number = duration < _1minute ? _1minute : duration > _60minutes ? _60minutes : duration
   const safeMinutes = Math.ceil(safeDuration / 60)
 
   return (

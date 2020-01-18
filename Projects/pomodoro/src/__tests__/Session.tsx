@@ -70,7 +70,7 @@ describe('<SessionLength />', () => {
   it('should not display value <= 0 secondes', () => {
     const { container } = render(<SessionLength duration={ -1 } />)
     const elt = container.querySelector('#session-length')
-    expect(elt).toHaveTextContent('0')
+    expect(elt).toHaveTextContent('1')
   })
 
   it('should not display value >= 60 minutes', () => {

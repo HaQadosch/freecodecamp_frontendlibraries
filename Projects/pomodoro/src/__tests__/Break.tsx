@@ -26,7 +26,7 @@ describe('<BreakDec />', () => {
     const idBreakDecrements = container.querySelectorAll('#break-decrement')
     expect(idBreakDecrements).toHaveLength(1)
   })
-
+  
   it('should be clickable', () => {
     const { container } = render(<BreakDec onClick={ handleClick } />)
     fireEvent.click(container.querySelector('button') as HTMLElement)
@@ -70,7 +70,7 @@ describe('<BreakLength />', () => {
   it('should not display value <= 0 secondes', () => {
     const { container } = render(<BreakLength duration={ -1 } />)
     const elt = container.querySelector('#break-length')
-    expect(elt).toHaveTextContent('0')
+    expect(elt).toHaveTextContent('1')
   })
 
   it('should not display value >= 60 minutes', () => {
