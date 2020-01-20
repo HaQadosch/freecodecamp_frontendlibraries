@@ -26,10 +26,27 @@ export const App: React.FC = () => {
   useEffect(() => {
     if (timeLeft <= 0) {
       setSession(session => session === SessionType.Session ? SessionType.Break : SessionType.Session)
-      setTimeLeft(session === SessionType.Session ? sessionDuration : breakDuration)
+    }
+  }, [timeLeft])
+
+  useEffect(() => {
+    setTimeLeft(session === SessionType.Session ? sessionDuration : breakDuration)
+    // eslint-disable-next-line
+  }, [session])
+
+  useEffect(() => {
+    if (!running && session === SessionType.Session) {
+      setTimeLeft(sessionDuration)
     }
     // eslint-disable-next-line
-  }, [timeLeft])
+  }, [sessionDuration])
+
+  useEffect(() => {
+    if (!running && session === SessionType.Break) {
+      setTimeLeft(breakDuration)
+    }
+    // eslint-disable-next-line
+  }, [breakDuration])
 
   return (
     <article className="app">
@@ -44,6 +61,9 @@ export const App: React.FC = () => {
   function reset () {
     setSessionDuration(_25minutes)
     setBreakDuration(_5minutes)
+    setSession(SessionType.Session)
+    setRunning(false)
+    setTimeLeft(sessionDuration)
   }
 }
 

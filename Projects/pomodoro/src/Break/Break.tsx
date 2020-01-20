@@ -14,8 +14,8 @@ export const Break: React.FC<IBreak> = ({ breakDuration, setBreakDuration }) => 
   return (
     <div id="break-label">
       Break Length <BreakLength duration={ breakDuration } />
-      <BreakInc onClick={ () => { setBreakDuration(duration => duration + _1minute) } } />
-      <BreakDec onClick={ () => { setBreakDuration(duration => duration - _1minute) } } />
+      <BreakInc onClick={ () => { if (breakDuration < _60minutes) setBreakDuration(duration => duration + _1minute) } } />
+      <BreakDec onClick={ () => { if (breakDuration > _1minute) setBreakDuration(duration => duration - _1minute) } } />
     </div>
   )
 }
