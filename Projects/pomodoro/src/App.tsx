@@ -13,6 +13,8 @@ export const App: React.FC = () => {
   const [running, setRunning] = useState(false)
   const [session, setSession] = useState(SessionType.Session)
   const [timeLeft, setTimeLeft] = useState(session === SessionType.Session ? sessionDuration : breakDuration)
+  const [play, setPlay] = useState(false)
+  const [forceStop, setForceStop] = useState(false)
 
   useEffect(() => {
     const intervalId = running
@@ -25,6 +27,7 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (timeLeft <= 0) {
+      setPlay(true)
       setSession(session => session === SessionType.Session ? SessionType.Break : SessionType.Session)
     }
   }, [timeLeft])
@@ -54,7 +57,7 @@ export const App: React.FC = () => {
       <Timer running={ running } setRunning={ setRunning } timeLeft={ timeLeft } sessionType={ session } reset={ reset } />
       <Session sessionDuration={ sessionDuration } setSessionDuration={ setSessionDuration } />
       <Break breakDuration={ breakDuration } setBreakDuration={ setBreakDuration } />
-      <Beep />
+      <Beep play={ play } setPlay={ setPlay } forceStop={ forceStop } />
     </article>
   )
 
@@ -64,6 +67,8 @@ export const App: React.FC = () => {
     setSession(SessionType.Session)
     setRunning(false)
     setTimeLeft(sessionDuration)
+    setPlay(false)
+    setForceStop(forceStop => !forceStop)
   }
 }
 
