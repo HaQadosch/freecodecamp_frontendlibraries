@@ -7,15 +7,16 @@ const _60minutes = 60 * 60
 interface ISession {
   sessionDuration: number
   setSessionDuration: React.Dispatch<React.SetStateAction<number>>
+  running: boolean
 }
 
-export const Session: React.FC<ISession> = ({ sessionDuration, setSessionDuration }) => {
+export const Session: React.FC<ISession> = ({ running, sessionDuration, setSessionDuration }) => {
 
   return (
     <div id="session-label">
       Session Length <SessionLength duration={ sessionDuration } />
-      <SessionInc onClick={ () => { if (sessionDuration < _60minutes) setSessionDuration(duration => duration + _1minute) } } />
-      <SessionDec onClick={ () => { if (sessionDuration > _1minute) setSessionDuration(duration => duration - _1minute) } } />
+      <SessionInc onClick={ () => { if (!running && sessionDuration < _60minutes) setSessionDuration(duration => duration + _1minute) } } />
+      <SessionDec onClick={ () => { if (!running && sessionDuration > _1minute) setSessionDuration(duration => duration - _1minute) } } />
     </div>
   )
 }

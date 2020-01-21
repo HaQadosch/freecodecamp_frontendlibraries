@@ -7,15 +7,16 @@ const _60minutes = 60 * 60
 interface IBreak {
   breakDuration: number
   setBreakDuration: React.Dispatch<React.SetStateAction<number>>
+  running: boolean
 }
 
-export const Break: React.FC<IBreak> = ({ breakDuration, setBreakDuration }) => {
+export const Break: React.FC<IBreak> = ({ breakDuration, setBreakDuration, running }) => {
 
   return (
     <div id="break-label">
       Break Length <BreakLength duration={ breakDuration } />
-      <BreakInc onClick={ () => { if (breakDuration < _60minutes) setBreakDuration(duration => duration + _1minute) } } />
-      <BreakDec onClick={ () => { if (breakDuration > _1minute) setBreakDuration(duration => duration - _1minute) } } />
+      <BreakInc onClick={ () => { if (!running && breakDuration < _60minutes) setBreakDuration(duration => duration + _1minute) } } />
+      <BreakDec onClick={ () => { if (!running && breakDuration > _1minute) setBreakDuration(duration => duration - _1minute) } } />
     </div>
   )
 }
