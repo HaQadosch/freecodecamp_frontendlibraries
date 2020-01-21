@@ -27,8 +27,8 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     if (timeLeft <= 0) {
-      setPlay(true)
       setSession(session => session === SessionType.Session ? SessionType.Break : SessionType.Session)
+      setPlay(true)
     }
   }, [timeLeft])
 
@@ -62,13 +62,13 @@ export const App: React.FC = () => {
   )
 
   function reset () {
+    setRunning(false)
+    setPlay(false)
     setSessionDuration(_25minutes)
     setBreakDuration(_5minutes)
-    setSession(SessionType.Session)
-    setRunning(false)
     setTimeLeft(sessionDuration)
-    setPlay(false)
     setForceStop(forceStop => !forceStop)
+    setSession(SessionType.Session)
   }
 }
 

@@ -20,6 +20,7 @@ export const Session: React.FC<ISession> = ({ sessionDuration, setSessionDuratio
   )
 }
 
+
 interface ISessionInc {
   onClick: MouseEventHandler
 }

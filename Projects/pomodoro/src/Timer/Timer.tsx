@@ -6,7 +6,6 @@ export enum SessionType {
 }
 
 interface ITimer {
-  // Number of seconds left before switching sessions.
   timeLeft: number
   sessionType: SessionType
   reset: () => void
