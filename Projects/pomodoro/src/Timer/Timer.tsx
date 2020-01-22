@@ -1,5 +1,8 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react'
 
+import { AppDispatch } from "../Store/store"
+import { useDispatch } from 'react-redux'
+
 export enum SessionType {
   Session = "Session",
   Break = "Break"
@@ -15,6 +18,9 @@ interface ITimer {
 const _60minutes = 60 * 60
 
 export const Timer: React.FC<ITimer> = ({ reset, sessionDuration, breakDuration, setPlay }) => {
+  const dispatch: AppDispatch = useDispatch()
+  console.log({ dispatch })
+
   const [session, setSession] = useState(SessionType.Session)
   const [timeLeft, setTimeLeft] = useState(sessionDuration)
   const [running, setRunning] = useState(false)

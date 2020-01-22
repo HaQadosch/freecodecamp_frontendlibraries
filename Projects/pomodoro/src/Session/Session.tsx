@@ -1,66 +1,22 @@
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 
-const _1minute = 1 * 60
-const _25minutes = 25 * 60
-const _60minutes = 60 * 60
+import { AppDispatch } from "../Store/store"
+import { incSession, decSession, RootState } from "../Store/rootReducer";
+import { useDispatch, useSelector } from 'react-redux'
 
-interface ISession {
-  sessionDuration: number
-  setSessionDuration: React.Dispatch<React.SetStateAction<number>>
-  running: boolean
-}
-
-export const Session: React.FC<ISession> = ({ running, sessionDuration, setSessionDuration }) => {
+export const Session: React.FC = () => {
+  const dispatch: AppDispatch = useDispatch()
+  const { sessionDuration } = useSelector(({ duration }: RootState) => duration)
 
   return (
     <div id="session-label">
-      Session Length <SessionLength duration={ sessionDuration } />
-      <SessionInc onClick={ () => { if (!running && sessionDuration < _60minutes) setSessionDuration(duration => duration + _1minute) } } />
-      <SessionDec onClick={ () => { if (!running && sessionDuration > _1minute) setSessionDuration(duration => duration - _1minute) } } />
+      Session Length <span id="session-length">{sessionDuration}</span>
+      <button id="session-increment" onClick={() => { dispatch(incSession()) }} >
+        Inc Session
+      </button>
+      <button id="session-decrement" onClick={() => { dispatch(decSession()) }} >
+        Dec Session
+      </button>
     </div>
-  )
-}
-
-
-interface ISessionInc {
-  onClick: MouseEventHandler
-}
-
-export const SessionInc: React.FC<ISessionInc> = ({ onClick }) => {
-
-  return (
-    <button id="session-increment" onClick={ onClick }>
-      Inc Session
-    </button>
-  )
-}
-
-
-interface ISessionDec {
-  onClick: MouseEventHandler
-}
-
-export const SessionDec: React.FC<ISessionDec> = ({ onClick }) => {
-
-  return (
-    <button id="session-decrement" onClick={ onClick }>
-      Dec Session
-    </button>
-  )
-}
-
-interface ISessionLength {
-  duration: number
-}
-
-
-export const SessionLength: React.FC<ISessionLength> = ({ duration = _25minutes }) => {
-  const safeDuration: number = duration < _1minute ? _1minute : duration > _60minutes ? _60minutes : duration
-  const safeMinutes = Math.floor(safeDuration / 60)
-
-  return (
-    <span id="session-length">
-      { safeMinutes }
-    </span>
   )
 }

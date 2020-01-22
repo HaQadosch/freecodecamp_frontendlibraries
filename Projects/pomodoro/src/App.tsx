@@ -14,13 +14,14 @@ export const App: React.FC = () => {
   const [play, setPlay] = useState(false)
   const [forceStop, setForceStop] = useState(false)
 
+  console.log({ running })
 
   return (
     <article className="app">
       <h1>Clock</h1>
       <Timer breakDuration={breakDuration} sessionDuration={sessionDuration} reset={reset} setPlay={setPlay} />
-      <Session sessionDuration={sessionDuration} setSessionDuration={setSessionDuration} running={running} />
-      <Break breakDuration={breakDuration} setBreakDuration={setBreakDuration} running={running} />
+      <Session />
+      <Break />
       <Beep play={play} setPlay={setPlay} forceStop={forceStop} />
     </article>
   )
