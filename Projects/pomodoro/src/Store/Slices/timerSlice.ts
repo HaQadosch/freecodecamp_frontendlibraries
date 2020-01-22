@@ -1,8 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { produce, Draft } from 'immer'
-import { SessionType } from './../../Timer/Timer'
 
 const _25minutes = 25 * 60
+
+export enum SessionType {
+  Session = "Session",
+  Break = "Break"
+}
 
 type TimerState = {
   readonly running: boolean

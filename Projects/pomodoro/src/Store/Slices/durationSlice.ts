@@ -48,7 +48,8 @@ const incSessionReducer = {
  */
 const decBreakReducer = {
   decBreak: (state: DurationState) => produce(state, (draft: Draft<DurationState>) => {
-    draft.breakDuration = state.breakDuration <= _1minute ? _1minute : state.breakDuration - 1
+    console.log({ state: state.breakDuration, draft: draft.breakDuration })
+    draft.breakDuration = draft.breakDuration <= _1minute ? _1minute : draft.breakDuration - 1
   })
 }
 /**
@@ -58,7 +59,7 @@ const decBreakReducer = {
  */
 const decSessionReducer = {
   decSession: (state: DurationState) => produce(state, (draft: Draft<DurationState>) => {
-    draft.sessionDuration = state.sessionDuration <= _1minute ? _1minute : state.sessionDuration - 1
+    if (state.sessionDuration > _1minute) draft.sessionDuration = state.sessionDuration - 1
   })
 }
 

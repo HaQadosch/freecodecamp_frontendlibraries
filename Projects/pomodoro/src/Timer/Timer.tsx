@@ -1,12 +1,10 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react'
 
 import { AppDispatch } from "../Store/store"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState, resetDuration, resetTimer } from "../Store/rootReducer";
 
-export enum SessionType {
-  Session = "Session",
-  Break = "Break"
-}
+import { SessionType } from "../Store/Slices/timerSlice";
 
 interface ITimer {
   reset: () => void
@@ -19,12 +17,13 @@ const _60minutes = 60 * 60
 
 export const Timer: React.FC<ITimer> = ({ reset, sessionDuration, breakDuration, setPlay }) => {
   const dispatch: AppDispatch = useDispatch()
-  console.log({ dispatch })
+  const { type, running, clock } = useSelector(({ timer }: RootState) => timer)
 
   const [session, setSession] = useState(SessionType.Session)
   const [timeLeft, setTimeLeft] = useState(sessionDuration)
-  const [running, setRunning] = useState(false)
-  let [minutesLeft, secondesLeft] = safeTime(timeLeft)
+  const [, setRunning] = useState(false)
+
+  let [minutesLeft, secondesLeft] = safeTime(clock)
 
   useEffect(() => {
     const intervalId = running
@@ -50,7 +49,7 @@ export const Timer: React.FC<ITimer> = ({ reset, sessionDuration, breakDuration,
   return (
     <article id="timer">
       <div id="timer-label">
-        {session} {running ? 'running' : 'stopped'}
+        {type} {running ? 'running' : 'stopped'}
       </div>
       <div id="time-left">
         {`${minutesLeft < 10 ? '0' : ''}${minutesLeft}:${secondesLeft < 10 ? '0' : ''}${secondesLeft}`}
@@ -61,10 +60,8 @@ export const Timer: React.FC<ITimer> = ({ reset, sessionDuration, breakDuration,
   )
 
   function forceReset() {
-    reset()
-    setRunning(false)
-    setSession(SessionType.Session)
-    setTimeLeft(sessionDuration)
+    dispatch(resetDuration())
+    dispatch(resetTimer())
   }
 }
 
