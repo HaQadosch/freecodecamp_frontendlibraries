@@ -10,11 +10,9 @@ const _25minutes = 25 * 60
 export const App: React.FC = () => {
   const [sessionDuration, setSessionDuration] = useState(_25minutes)
   const [breakDuration, setBreakDuration] = useState(_5minutes)
-  const [running, setRunning] = useState(false)
+  const [, setRunning] = useState(false)
   const [play, setPlay] = useState(false)
   const [forceStop, setForceStop] = useState(false)
-
-  console.log({ running })
 
   return (
     <article className="app">

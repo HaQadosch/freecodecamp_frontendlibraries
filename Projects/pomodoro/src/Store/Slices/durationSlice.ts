@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { produce, Draft } from 'immer'
+import { produce, Draft, setAutoFreeze } from 'immer'
 
 const _60minutes = 60
 const _1minute = 1
@@ -14,12 +14,14 @@ const initialState: DurationState = {
   sessionDuration: 25,
 }
 
+setAutoFreeze(false)
+
 /**
  * { type: 'duration/reset' }
  * Sets the durations back to the initial state.
  */
 const resetReducer = {
-  reset: (state: DurationState) => produce(state, (_: Draft<DurationState>) => initialState)
+  reset: produce((_: Draft<DurationState>) => initialState)
 }
 /**
  * { type: 'duration/incBreak' }
@@ -27,8 +29,8 @@ const resetReducer = {
  * Max is 60 minutes.
  */
 const incBreakReducer = {
-  incBreak: (state: DurationState) => produce(state, (draft: Draft<DurationState>) => {
-    draft.breakDuration = state.breakDuration >= _60minutes ? _60minutes : state.breakDuration + 1
+  incBreak: produce((draft: Draft<DurationState>) => {
+    draft.breakDuration = Math.min(_60minutes, draft.breakDuration + 1)
   })
 }
 /**
@@ -37,8 +39,8 @@ const incBreakReducer = {
  * Max is 60 minutes.
  */
 const incSessionReducer = {
-  incSession: (state: DurationState) => produce(state, (draft: Draft<DurationState>) => {
-    draft.sessionDuration = state.sessionDuration >= _60minutes ? _60minutes : state.sessionDuration + 1
+  incSession: produce((draft: Draft<DurationState>) => {
+    draft.sessionDuration = Math.min(_60minutes, draft.sessionDuration + 1)
   })
 }
 /**
@@ -47,9 +49,9 @@ const incSessionReducer = {
  * Min is 1 minute.
  */
 const decBreakReducer = {
-  decBreak: (state: DurationState) => produce(state, (draft: Draft<DurationState>) => {
-    console.log({ state: state.breakDuration, draft: draft.breakDuration })
-    draft.breakDuration = draft.breakDuration <= _1minute ? _1minute : draft.breakDuration - 1
+  decBreak: ({ breakDuration, sessionDuration }: DurationState) => ({
+    sessionDuration,
+    breakDuration: Math.max(_1minute, breakDuration - 1)
   })
 }
 /**
@@ -58,8 +60,8 @@ const decBreakReducer = {
  * Min is 1 minute.
  */
 const decSessionReducer = {
-  decSession: (state: DurationState) => produce(state, (draft: Draft<DurationState>) => {
-    if (state.sessionDuration > _1minute) draft.sessionDuration = state.sessionDuration - 1
+  decSession: produce((draft: Draft<DurationState>) => {
+    draft.sessionDuration = Math.max(_1minute, draft.sessionDuration - 1)
   })
 }
 

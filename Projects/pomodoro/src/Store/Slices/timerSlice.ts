@@ -25,7 +25,7 @@ const initialState: TimerState = {
  * Sets the timer back to the initial state.
  */
 const resetReducer = {
-  reset: (state: TimerState) => produce(state, (_: Draft<TimerState>) => initialState)
+  reset: produce((_: Draft<TimerState>) => initialState)
 }
 
 export const timerSlice = createSlice({
