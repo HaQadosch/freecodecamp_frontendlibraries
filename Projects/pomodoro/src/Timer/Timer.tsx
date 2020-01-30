@@ -2,7 +2,7 @@ import React, { MouseEventHandler, useEffect } from 'react'
 
 import { AppDispatch } from "../Store/store"
 import { useDispatch, useSelector } from 'react-redux'
-import { RootState, resetDuration, resetTimer, play, pause, tick } from "../Store/rootReducer";
+import { RootState, resetDuration, resetTimer, resetBeeper, play, pause, tick, setClock } from "../Store/rootReducer";
 
 import { SessionType } from "../Store/Slices/timerSlice";
 
@@ -27,6 +27,20 @@ export const Timer: React.FC = () => {
     // eslint-disable-next-line
   }, [running])
 
+  useEffect(() => {
+    if (!running && type === SessionType.Session) {
+      dispatch(setClock(sessionDuration * 60))
+    }
+    // eslint-disable-next-line
+  }, [sessionDuration])
+
+  useEffect(() => {
+    if (!running && type === SessionType.Break) {
+      dispatch(setClock(breakDuration * 60))
+    }
+    // eslint-disable-next-line
+  }, [breakDuration])
+
   return (
     <article id="timer">
       <div id="timer-label">
@@ -46,6 +60,7 @@ export const Timer: React.FC = () => {
   function forceReset () {
     dispatch(resetDuration())
     dispatch(resetTimer())
+    dispatch(resetBeeper())
   }
 }
 

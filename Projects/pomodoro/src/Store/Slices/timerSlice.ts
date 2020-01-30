@@ -47,17 +47,28 @@ const pauseReducer = {
 }
 
 /**
- * { type: 'timer/tick' }
+ * { type: 'timer/tick', payload: 25 }
  * Reduces the time by 1 seconde.
+ * Sets the clock to the payload value if clock reaches 0.
  */
 const tickReducer = {
-  tick: produce((draft: Draft<TimerState>, action: PayloadAction<number | undefined>) => {
+  tick: produce((draft: Draft<TimerState>, action: PayloadAction<number>) => {
     if (draft.clock < 0) {
       draft.type = draft.type === SessionType.Session ? SessionType.Break : SessionType.Session
-      draft.clock = action?.payload ?? _25minutes
+      draft.clock = action.payload || _25minutes
     } else {
       draft.clock -= 1
     }
+  })
+}
+
+/**
+ * { type: 'timer/setClock', payload: 25 }
+ * Sets the clock to the payload value.
+ */
+const setClockReducer = {
+  setClock: produce((draft: Draft<TimerState>, action: PayloadAction<number>) => {
+    draft.clock = action.payload || _25minutes
   })
 }
 
@@ -68,6 +79,7 @@ export const timerSlice = createSlice({
     ...resetReducer,
     ...playReducer,
     ...pauseReducer,
-    ...tickReducer
+    ...tickReducer,
+    ...setClockReducer
   }
 })

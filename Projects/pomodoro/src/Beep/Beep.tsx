@@ -1,29 +1,30 @@
 import React, { useRef, useEffect } from 'react'
 
+import { AppDispatch } from "../Store/store"
+import { stop, RootState } from "../Store/rootReducer";
+import { useDispatch, useSelector } from 'react-redux'
+
 interface IBeep {
-  play: boolean
-  forceStop: boolean
-  setPlay: React.Dispatch<React.SetStateAction<boolean>>
+
 }
 
-export const Beep: React.FC<IBeep> = ({ play, setPlay, forceStop }) => {
+export const Beep: React.FC<IBeep> = () => {
+  const dispatch: AppDispatch = useDispatch()
+
+  const { play } = useSelector(({ beeper }: RootState) => beeper)
   const refAudio = useRef<HTMLAudioElement>(null)
 
   useEffect(
     () => {
       if (play) {
         refAudio.current?.play()
-        setPlay(false)
+        dispatch(stop())
+      } else {
+        refAudio.current?.pause?.()
+        if (refAudio.current) refAudio.current.currentTime = 0
       }
       // eslint-disable-next-line
     }, [play])
-
-  useEffect(
-    () => {
-      refAudio.current?.pause?.()
-      if (refAudio.current) refAudio.current.currentTime = 0
-      // eslint-disable-next-line
-    }, [forceStop])
 
   return <audio src="/t-rex-roar.mp3" id="beep" ref={ refAudio } />
 }
