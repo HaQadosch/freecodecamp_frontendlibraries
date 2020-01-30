@@ -40,7 +40,7 @@ const incBreakReducer = {
  */
 const incSessionReducer = {
   incSession: produce((draft: Draft<DurationState>) => {
-    draft.sessionDuration = Math.min(_60minutes, draft.sessionDuration + 1)
+    draft.sessionDuration = Math.min(_60minutes, draft.sessionDuration + (draft.sessionDuration > 50 ? 5 : 1))
   })
 }
 /**
