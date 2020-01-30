@@ -13,7 +13,7 @@ const {
 } = timerSlice
 const {
   reducer: beeperReducer,
-  actions: { reset: resetBeeper, play: start, stop }
+  actions: { reset: resetBeeper, play: playBeeper, stop, pause: pauseBeeper }
 } = beeperSlice
 
 export const rootReducer = combineReducers({
@@ -27,5 +27,5 @@ export type RootState = ReturnType<typeof rootReducer>
 export {
   resetDuration, incBreak, incSession, decBreak, decSession,
   resetTimer, play, pause, tick, setClock,
-  resetBeeper, start, stop
+  resetBeeper, playBeeper, stop, pauseBeeper
 }

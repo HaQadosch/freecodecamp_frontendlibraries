@@ -3,11 +3,11 @@ import { produce, Draft } from 'immer'
 
 
 type BeeperState = {
-  readonly play: boolean
+  readonly play: number
 }
 
 const initialState: BeeperState = {
-  play: false
+  play: 0
 }
 
 const resetReducer = {
@@ -19,7 +19,16 @@ const resetReducer = {
  */
 const playReducer = {
   play: produce((draft: Draft<BeeperState>) => {
-    draft.play = true
+    draft.play++
+  })
+}
+/**
+ * { type: 'beeper/stop' }
+ * Stops the beeper.
+ */
+const pauseReducer = {
+  pause: produce((draft: Draft<BeeperState>) => {
+    draft.play = 0
   })
 }
 /**
@@ -28,7 +37,7 @@ const playReducer = {
  */
 const stopReducer = {
   stop: produce((draft: Draft<BeeperState>) => {
-    draft.play = false
+    draft.play = -1
   })
 }
 
@@ -38,6 +47,7 @@ export const beeperSlice = createSlice({
   reducers: {
     ...resetReducer,
     ...playReducer,
-    ...stopReducer
+    ...stopReducer,
+    ...pauseReducer
   }
 })

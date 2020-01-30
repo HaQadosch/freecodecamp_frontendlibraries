@@ -1,24 +1,23 @@
 import React, { useRef, useEffect } from 'react'
 
-import { AppDispatch } from "../Store/store"
-import { stop, RootState } from "../Store/rootReducer";
-import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from "../Store/rootReducer";
+import { useSelector } from 'react-redux'
 
 interface IBeep {
 
 }
 
 export const Beep: React.FC<IBeep> = () => {
-  const dispatch: AppDispatch = useDispatch()
 
   const { play } = useSelector(({ beeper }: RootState) => beeper)
   const refAudio = useRef<HTMLAudioElement>(null)
 
   useEffect(
     () => {
-      if (play) {
+      if (play > 0) {
         refAudio.current?.play()
-        dispatch(stop())
+      } else if (play === 0) {
+        refAudio.current?.pause?.()
       } else {
         refAudio.current?.pause?.()
         if (refAudio.current) refAudio.current.currentTime = 0
